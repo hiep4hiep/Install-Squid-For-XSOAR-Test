@@ -78,6 +78,36 @@ ssl_bump server-first all
 sslproxy_cert_error allow all
 ```
 
+### Run squid check to verify the configuration file
+```
+squid -k parse
+TRUNCATED....
+2022/12/22 00:47:18| Processing: logfile_rotate 0
+2022/12/22 00:47:18| Processing: http_access allow all
+2022/12/22 00:47:18| Processing: http_port 3128 ssl-bump cert=/etc/squid/certs/squid-ca-cert-key.pem generate-host-certificates=on dynamic_cert_mem_cache_size=4MB
+2022/12/22 00:47:18| Processing: coredump_dir /var/spool/squid
+2022/12/22 00:47:18| Processing: refresh_pattern ^ftp:		1440	20%	10080
+2022/12/22 00:47:18| Processing: refresh_pattern ^gopher:	1440	0%	1440
+2022/12/22 00:47:18| Processing: refresh_pattern -i (/cgi-bin/|\?) 0	0%	0
+2022/12/22 00:47:18| Processing: refresh_pattern .		0	20%	4320
+2022/12/22 00:47:18| Processing: acl step1 at_step SslBump1
+2022/12/22 00:47:18| Processing: ssl_bump peek step1
+2022/12/22 00:47:18| Processing: ssl_bump bump all
+2022/12/22 00:47:18| Processing: sslcrtd_program /usr/lib/squid/security_file_certgen -s /var/lib/squid/ssl_db -M 4MB
+2022/12/22 00:47:18| Processing: sslcrtd_children 5
+2022/12/22 00:47:18| Processing: ssl_bump server-first all
+2022/12/22 00:47:18| Processing: sslproxy_cert_error allow all
+2022/12/22 00:47:18| Initializing https:// proxy context
+2022/12/22 00:47:18| Requiring client certificates.
+2022/12/22 00:47:18| Initializing http_port [::]:3128 TLS contexts
+2022/12/22 00:47:18| Using certificate in /etc/squid/certs/squid-ca-cert-key.pem
+2022/12/22 00:47:18| Using certificate chain in /etc/squid/certs/squid-ca-cert-key.pem
+2022/12/22 00:47:18| Adding issuer CA: /C=AU/ST=Some-State/O=Internet Widgits Pty Ltd/CN=xsoar-proxy/emailAddress=hiep4hiep@gmail.com
+2022/12/22 00:47:18| Using key in /etc/squid/certs/squid-ca-cert-key.pem
+2022/12/22 00:47:18| Not requiring any client certificates
+....
+```
+
 # Enable and start Squid server
 ```
 systemctl enable squid
