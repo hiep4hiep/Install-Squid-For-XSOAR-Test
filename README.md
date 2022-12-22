@@ -1,6 +1,6 @@
 # Install-Squid-For-XSOAR-Test
 
-# Install Squid binary using this repo https://github.com/diladele/squid-ubuntu
+# Install Squid v5 binary using this repo https://github.com/diladele/squid-ubuntu
 
 ## add diladele apt key
 ```wget -qO - https://packages.diladele.com/diladele_pub.asc | sudo apt-key add -```
