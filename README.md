@@ -18,7 +18,7 @@ apt-get update && apt-get install -y \
     squidclient \
     libecap3 libecap3-dev
 ```  
-# Verify is the Squid binary was installed with SSL options
+# Verify if the Squid binary was installed with SSL options
 ```
 squid -v
 ```
