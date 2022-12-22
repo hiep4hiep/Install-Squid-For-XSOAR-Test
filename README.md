@@ -116,3 +116,5 @@ systemctl status squid
 ```
 ![image](https://user-images.githubusercontent.com/41276379/209030615-8044a837-be66-4f7c-815f-50a5f114490e.png)
 
+
+# Now you have a Proxy server with SSL inspection enabled. Configure your server to point to http://squid-server:3128
